@@ -13,6 +13,8 @@ export default function Form() {
     if (imc !== null) {
       toast.show({
         description: `Resultado do IMC: ${imc}`,
+        placement: 'top',
+        backgroundColor: '#2C3E50',
       })
     }
   }, [imc])
@@ -22,20 +24,22 @@ export default function Form() {
       const result = (weight / (height * height)).toFixed(2)
       setImc(result)
       setTextButton('Calcular Novamente')
+    } else {
+      setTextButton('Calcular')
     }
-    setTextButton('Calcular')
   }
   return (
     <Box style={styleForm.container}>
       <Box>
         <Box style={styleForm.contentHeader}>
-          <Text>SEU IMC DIGITAL</Text>
+          <Text style={styleForm.labelTitle.titleHeader}>SEU IMC DIGITAL</Text>
         </Box>
         <Box style={styleForm.content}>
           <Box style={styleForm.formContent}>
             <Box style={styleForm.form}>
-              <Text>Altura</Text>
+              <Text style={styleForm.labelTitle}>Altura</Text>
               <Input
+                borderColor="cyan.800"
                 variant="filled"
                 backgroundColor="#fff"
                 onChangeText={setHeight}
@@ -44,8 +48,9 @@ export default function Form() {
                 keyboardType="numeric"
               />
 
-              <Text>Peso</Text>
+              <Text style={styleForm.labelTitle}>Peso</Text>
               <Input
+                borderColor="cyan.800"
                 variant="filled"
                 backgroundColor="#fff"
                 onChangeText={setWeight}
@@ -54,8 +59,9 @@ export default function Form() {
                 keyboardType="numeric"
               />
             </Box>
-            <Box style={styleForm}>
+            <Box>
               <Button
+                style={styleForm.button}
                 onPress={() => {
                   validationImc()
                 }}

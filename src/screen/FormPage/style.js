@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 const styleForm = StyleSheet.create({
   container: {
-    backgroundColor: '#2B85A2',
+    backgroundColor: '#F5F5F5',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -13,7 +13,15 @@ const styleForm = StyleSheet.create({
     // gap: 16,
     width: '100%',
     justifyContent: 'flex-start',
-    marginBottom: 150,
+    marginBottom: 90,
+    color: '#00FF00',
+  },
+  labelTitle: {
+    color: '#2C3E50',
+    titleHeader: {
+      fontSize: 20,
+      color: '#2C3E50',
+    },
   },
   content: {
     width: '100%',
@@ -35,6 +43,9 @@ const styleForm = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 16,
+  },
+  button: {
+    backgroundColor: '#2C3E50',
   },
 })
 export default styleForm
