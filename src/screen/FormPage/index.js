@@ -12,7 +12,7 @@ export default function Form() {
   useEffect(() => {
     if (imc !== null) {
       toast.show({
-        description: imc,
+        description: `Resultado do IMC: ${imc}`,
       })
     }
   }, [imc])
