@@ -2,7 +2,7 @@ import { Box, Button, Input, Text, useToast } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import styleForm from './style'
 
-export default function Form() {
+function Form() {
   const [imc, setImc] = useState(null)
   const [height, setHeight] = useState(null)
   const [weight, setWeight] = useState(null)
@@ -75,3 +75,4 @@ export default function Form() {
     </Box>
   )
 }
+export default Form
