@@ -1,15 +1,16 @@
-import { Box, NativeBaseProvider } from 'native-base'
+import { NavigationContainer } from '@react-navigation/native'
+import { NativeBaseProvider } from 'native-base'
 import React from 'react'
-import Form from './src/screen/FormPage'
 import Menu from './src/components/menu'
+import Routes from './src/routes'
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Box>
-        <Form />
+      <NavigationContainer>
+        <Routes />
         <Menu />
-      </Box>
+      </NavigationContainer>
     </NativeBaseProvider>
   )
 }
