@@ -10,7 +10,6 @@ const styleForm = StyleSheet.create({
   },
   contentHeader: {
     display: 'flex',
-    // gap: 16,
     width: '100%',
     justifyContent: 'flex-start',
     marginBottom: 90,
