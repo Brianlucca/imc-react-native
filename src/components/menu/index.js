@@ -2,7 +2,7 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import { Box } from 'native-base'
 import styleMenu from './style'
 
-export default function Menu() {
+function Menu() {
   return (
     <Box style={styleMenu.container}>
       <Box style={styleMenu.content}>
@@ -13,3 +13,4 @@ export default function Menu() {
     </Box>
   )
 }
+export default Menu

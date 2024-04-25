@@ -12,9 +12,11 @@ function Form() {
   useEffect(() => {
     if (imc !== null) {
       toast.show({
-        description: `Resultado do IMC: ${imc}`,
-        placement: 'top',
-        backgroundColor: '#2C3E50',
+        description: (
+          <Text style={{ color: '#ffff' }}>Resultado do IMC: {imc}</Text>
+        ),
+        placement: 'bottom',
+        backgroundColor: '#4682B4',
       })
     }
   }, [imc])
