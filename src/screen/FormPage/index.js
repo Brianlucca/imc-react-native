@@ -34,7 +34,7 @@ function Form() {
     <Box style={styleForm.container}>
       <Box>
         <Box style={styleForm.contentHeader}>
-          <Text style={styleForm.labelTitle.titleHeader}>SEU IMC DIGITAL</Text>
+          <Text style={styleForm.titleHeader}>SEU IMC DIGITAL</Text>
         </Box>
         <Box style={styleForm.content}>
           <Box style={styleForm.formContent}>
