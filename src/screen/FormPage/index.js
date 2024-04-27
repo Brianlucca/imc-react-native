@@ -1,5 +1,7 @@
-import { Box, Button, Input, Text, useToast } from 'native-base'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Box, Input, Text, useToast } from 'native-base'
 import React, { useEffect, useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 import styleForm from './style'
 
 function Form() {
@@ -9,8 +11,19 @@ function Form() {
   const [textButton, setTextButton] = useState('Calcular')
   const toast = useToast()
 
+  async function validationImc() {
+    if (weight != null && height != null) {
+      const result = (weight / (height * height)).toFixed(2)
+      setImc(result)
+      setTextButton('Calcular Novamente')
+    } else {
+      setTextButton('Calcular')
+    }
+  }
+
   useEffect(() => {
     if (imc !== null) {
+      setData()
       toast.show({
         description: (
           <Text style={{ color: '#ffff' }}>Resultado do IMC: {imc}</Text>
@@ -21,15 +34,10 @@ function Form() {
     }
   }, [imc])
 
-  function validationImc() {
-    if (weight != null && height != null) {
-      const result = (weight / (height * height)).toFixed(2)
-      setImc(result)
-      setTextButton('Calcular Novamente')
-    } else {
-      setTextButton('Calcular')
-    }
+  async function setData() {
+    await AsyncStorage.setItem('@resultImc', imc)
   }
+
   return (
     <Box style={styleForm.container}>
       <Box>
@@ -62,14 +70,14 @@ function Form() {
               />
             </Box>
             <Box>
-              <Button
+              <TouchableOpacity
                 style={styleForm.button}
                 onPress={() => {
                   validationImc()
                 }}
               >
-                {textButton}
-              </Button>
+                <Text style={styleForm.textButton}>{textButton}</Text>
+              </TouchableOpacity>
             </Box>
           </Box>
         </Box>
