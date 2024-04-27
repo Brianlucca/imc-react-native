@@ -46,6 +46,11 @@ const styleForm = StyleSheet.create({
   },
   button: {
     backgroundColor: '#2C3E50',
+    padding: 12,
+    borderRadius: 6,
+  },
+  textButton: {
+    color: '#fff',
   },
 })
 export default styleForm
