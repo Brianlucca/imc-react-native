@@ -12,6 +12,9 @@ function Menu() {
   const navigateForm = () => {
     navigation.navigate('Form')
   }
+  const navigateHistoric = () => {
+    navigation.navigate('Historic')
+  }
 
   return (
     <Box style={styleMenu.container}>
@@ -22,7 +25,12 @@ function Menu() {
           color="white"
           onPress={navigateForm}
         />
-        <FontAwesome5 name="address-book" size={24} color="white" />
+        <FontAwesome5
+          name="address-book"
+          size={24}
+          color="white"
+          onPress={navigateHistoric}
+        />
         <FontAwesome5
           name="question-circle"
           size={24}
