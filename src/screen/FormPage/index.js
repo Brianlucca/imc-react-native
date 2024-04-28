@@ -1,5 +1,7 @@
-import { Box, Button, Input, Text, useToast } from 'native-base'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Box, Input, Text, useToast } from 'native-base'
 import React, { useEffect, useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 import styleForm from './style'
 
 function Form() {
@@ -9,17 +11,7 @@ function Form() {
   const [textButton, setTextButton] = useState('Calcular')
   const toast = useToast()
 
-  useEffect(() => {
-    if (imc !== null) {
-      toast.show({
-        description: `Resultado do IMC: ${imc}`,
-        placement: 'top',
-        backgroundColor: '#2C3E50',
-      })
-    }
-  }, [imc])
-
-  function validationImc() {
+  async function validationImc() {
     if (weight != null && height != null) {
       const result = (weight / (height * height)).toFixed(2)
       setImc(result)
@@ -28,11 +20,36 @@ function Form() {
       setTextButton('Calcular')
     }
   }
+
+  useEffect(() => {
+    if (imc !== null) {
+      setData()
+      toast.show({
+        description: (
+          <Text style={{ color: '#ffff' }}>Resultado do IMC: {imc}</Text>
+        ),
+        placement: 'bottom',
+        backgroundColor: '#4682B4',
+      })
+    }
+  }, [imc])
+
+  async function setData() {
+    try {
+      const existingHistory = await AsyncStorage.getItem('@historicImc')
+      const historic = existingHistory ? JSON.parse(existingHistory) : []
+      historic.push(imc)
+      await AsyncStorage.setItem('@historicImc', JSON.stringify(historic))
+    } catch (error) {
+      console.error('Erro ao salvar histórico:', error)
+    }
+  }
+
   return (
     <Box style={styleForm.container}>
       <Box>
         <Box style={styleForm.contentHeader}>
-          <Text style={styleForm.labelTitle.titleHeader}>SEU IMC DIGITAL</Text>
+          <Text style={styleForm.titleHeader}>SEU IMC DIGITAL</Text>
         </Box>
         <Box style={styleForm.content}>
           <Box style={styleForm.formContent}>
@@ -60,14 +77,14 @@ function Form() {
               />
             </Box>
             <Box>
-              <Button
+              <TouchableOpacity
                 style={styleForm.button}
                 onPress={() => {
                   validationImc()
                 }}
               >
-                {textButton}
-              </Button>
+                <Text style={styleForm.textButton}>{textButton}</Text>
+              </TouchableOpacity>
             </Box>
           </Box>
         </Box>

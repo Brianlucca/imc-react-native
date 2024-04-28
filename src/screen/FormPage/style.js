@@ -10,18 +10,15 @@ const styleForm = StyleSheet.create({
   },
   contentHeader: {
     display: 'flex',
-    // gap: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
-    justifyContent: 'flex-start',
     marginBottom: 90,
-    color: '#00FF00',
   },
-  labelTitle: {
+  titleHeader: {
+    fontSize: 20,
     color: '#2C3E50',
-    titleHeader: {
-      fontSize: 20,
-      color: '#2C3E50',
-    },
+    fontWeight: 500,
   },
   content: {
     width: '100%',
@@ -37,6 +34,9 @@ const styleForm = StyleSheet.create({
     justifyContent: 'center',
     gap: 50,
   },
+  labelTitle: {
+    color: '#2C3E50',
+  },
   form: {
     width: '100%',
     flexDirection: 'column',
@@ -46,6 +46,11 @@ const styleForm = StyleSheet.create({
   },
   button: {
     backgroundColor: '#2C3E50',
+    padding: 12,
+    borderRadius: 6,
+  },
+  textButton: {
+    color: '#fff',
   },
 })
 export default styleForm
