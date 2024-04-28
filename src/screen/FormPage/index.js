@@ -35,7 +35,14 @@ function Form() {
   }, [imc])
 
   async function setData() {
-    await AsyncStorage.setItem('@resultImc', imc)
+    try {
+      const existingHistory = await AsyncStorage.getItem('@historicImc')
+      const historic = existingHistory ? JSON.parse(existingHistory) : []
+      historic.push(imc)
+      await AsyncStorage.setItem('@historicImc', JSON.stringify(historic))
+    } catch (error) {
+      console.error('Erro ao salvar histórico:', error)
+    }
   }
 
   return (

@@ -5,8 +5,7 @@ const styleHistoric = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    marginTop: '50%',
-    paddingHorizontal: 16,
+    marginTop: 100,
   },
   content: {
     gap: 10,
@@ -19,18 +18,28 @@ const styleHistoric = StyleSheet.create({
   },
   labelTitle: {
     fontSize: 20,
-    fontWeight: 700,
+    fontWeight: 'bold',
     color: '#2C3E50',
   },
   containerResult: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
   resultImc: {
     fontSize: 20,
     color: '#2C3E50',
+    textAlign: 'center',
+    margin: 6,
+  },
+  resultValue: {
+    fontSize: 20,
+    color: '#fff',
+    textAlign: 'center',
+    padding: 5,
+    backgroundColor: '#4682B4',
+    borderRadius: 8,
   },
 })
 export default styleHistoric
